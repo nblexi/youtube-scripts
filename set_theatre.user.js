@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Youtube Better Theater
+// @name         better youtube theater
 // @version      0.9.2
 // @description  expand video
 // @author       lexi

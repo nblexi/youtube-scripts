@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Youtube Chat Mode
+// @name         youtube chat mode
 // @version      0.4.1
 // @description  remove video element and rearrange chat
 // @author       lexi

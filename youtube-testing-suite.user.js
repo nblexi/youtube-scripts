@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Youtube Testing
+// @name         youtube testing suite
 // @version      0.1.2
 // @description  test youtube features
 // @author       lexi

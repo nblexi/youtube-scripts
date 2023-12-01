@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Expand Youtube Description
+// @name         expand youtube video description
 // @version      0.4.2
 // @description  edit description by auto-expanding and adding like information
 // @author       lexi
