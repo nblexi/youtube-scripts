@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         better youtube theater
-// @version      0.9.2
+// @version      0.9.3
 // @description  expand video
 // @author       lexi
 // @match        https://www.youtube.com/*

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         remove youtube comments
-// @version      0.8.2
+// @version      0.8.3
 // @description  youtube comments are a cesspool
 // @author       lexi
 // @match        https://www.youtube.com/*

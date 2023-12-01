@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         expand youtube video description
-// @version      0.4.2
+// @version      0.4.3
 // @description  edit description by auto-expanding and adding like information
 // @author       lexi
 // @match        https://www.youtube.com/*
