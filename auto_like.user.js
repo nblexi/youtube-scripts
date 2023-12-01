@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         Youtube Likes
-// @version      0.9.1
+// @name         youtube likes
+// @version      0.9.2
 // @description  auto like youtube videos
 // @author       lexi
 // @match        https://www.youtube.com/*
