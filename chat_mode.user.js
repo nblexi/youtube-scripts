@@ -45,7 +45,7 @@ let configure_site = () => {
     let chat = document.querySelector('#chat');
 
     related.style.display = 'none';
-    hide_chat.remove();
+    //hide_chat.remove(); don't remove to leave the "exp chat" button for truffle
 
     chat.style.height = '90vh';
     const view_count = document.querySelector('#info-text');
