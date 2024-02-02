@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         youtube likes
-// @version      0.9.2
+// @version      0.9.3
 // @description  auto like youtube videos
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -25,7 +25,7 @@ let create_like_button = () => {
     '#movie_player > div.ytp-chrome-bottom > div.ytp-chrome-controls > div.ytp-right-controls'
   );
   let lb = document.querySelector(
-    '#top-level-buttons-computed > segmented-like-dislike-button-view-model > yt-smartimation > div > div > like-button-view-model > toggle-button-view-model > button'
+    '#top-level-buttons-computed > segmented-like-dislike-button-view-model > yt-smartimation > div > div > like-button-view-model > toggle-button-view-model > button-view-model > button'
   );
 
   if (!target) {
@@ -132,7 +132,7 @@ let find_button_and_status = (what_to_return) => {
   'use strict';
 
   let like_button = document.querySelector(
-    '#top-level-buttons-computed > segmented-like-dislike-button-view-model > yt-smartimation > div > div > like-button-view-model > toggle-button-view-model > button'
+    '#top-level-buttons-computed > segmented-like-dislike-button-view-model > yt-smartimation > div > div > like-button-view-model > toggle-button-view-model > button-view-model > button'
   );
 
   let like_button_aria_pressed = like_button.getAttribute('aria-pressed');
@@ -154,7 +154,7 @@ let find_button_and_status = (what_to_return) => {
 let like_video = () => {
   'use strict';
   let like_button = document.querySelector(
-    '#top-level-buttons-computed > segmented-like-dislike-button-view-model > yt-smartimation > div > div > like-button-view-model > toggle-button-view-model > button'
+    '#top-level-buttons-computed > segmented-like-dislike-button-view-model > yt-smartimation > div > div > like-button-view-model > toggle-button-view-model > button-view-model > button'
   );
   like_button.click();
   append_data();
@@ -180,7 +180,7 @@ let append_data = () => {
     }, 2000);
   } else {
     let like_button = document.querySelector(
-      '#top-level-buttons-computed > segmented-like-dislike-button-view-model > yt-smartimation > div > div > like-button-view-model > toggle-button-view-model > button'
+      '#top-level-buttons-computed > segmented-like-dislike-button-view-model > yt-smartimation > div > div > like-button-view-model > toggle-button-view-model > button-view-model > button'
     );
 
     if (like_button) {
@@ -327,7 +327,7 @@ document.addEventListener('click', function (e) {
   }
 
   const like = e.target.closest(
-    '#top-level-buttons-computed > segmented-like-dislike-button-view-model > yt-smartimation > div > div > like-button-view-model > toggle-button-view-model > button'
+    '#top-level-buttons-computed > segmented-like-dislike-button-view-model > yt-smartimation > div > div > like-button-view-model > toggle-button-view-model > button-view-model > button'
   );
 
   if (like) {

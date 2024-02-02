@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         expand youtube video description
-// @version      0.4.4
+// @version      0.4.5
 // @description  edit description by auto-expanding and adding like information
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -73,7 +73,7 @@ let append_data = () => {
   let live_check = is_live();
   let created_elem = document.querySelector('#lexcode_span_likes');
   let like_button = document.querySelector(
-    '#top-level-buttons-computed > segmented-like-dislike-button-view-model > yt-smartimation > div > div > like-button-view-model > toggle-button-view-model > button'
+    '#top-level-buttons-computed > segmented-like-dislike-button-view-model > yt-smartimation > div > div > like-button-view-model > toggle-button-view-model > button-view-model > button'
   );
 
   let get_like_count = (lb) => {
@@ -117,7 +117,7 @@ let append_data = () => {
           );
           setTimeout(() => {
             like_button = document.querySelector(
-              '#top-level-buttons-computed > segmented-like-dislike-button-view-model > yt-smartimation > div > div > like-button-view-model > toggle-button-view-model > button'
+              '#top-level-buttons-computed > segmented-like-dislike-button-view-model > yt-smartimation > div > div > like-button-view-model > toggle-button-view-model > button-view-model > button'
             );
             like_number = get_like_count(like_button);
 
