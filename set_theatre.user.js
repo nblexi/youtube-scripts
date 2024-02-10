@@ -37,11 +37,11 @@ let theater_container;
 let theater_mode_butt;
 let fullscreen_button;
 let container_new_style =
-  'margin-top: 0px; margin-bottom: 4vh; position: fixed; top: 0px; left: 0px; width: 100vw; min-width: 100vw; background-color: #000000; height: auto; min-height: 100vh;';
+  "margin-top: 0px; margin-bottom: 4vh; position: fixed; top: 0px; left: 0px; width: 100vw; min-width: 100vw; background-color: #000000; height: auto; min-height: 100vh;";
 let columns_new_style =
-  'position: absolute; margin-left: 0px; margin-right: 0px; top: 107vh; width: 100%; min-width: 100%; background-color: rgba(0, 0, 0, 0.9);';
+  "position: absolute; margin-left: 0px; margin-right: 0px; top: 107vh; width: 100%; min-width: 100%; background-color: rgba(0, 0, 0, 0.9);";
 let masthead_new_style =
-  'transform: translateY(101vh); position: absolute; background-color: rgba(0, 0, 0, 0.95);';
+  "transform: translateY(101vh); position: absolute; background-color: rgba(0, 0, 0, 0.95);";
 let clip_button;
 let vars_initialized = false;
 let masthead_vars_initialized = false;
@@ -58,29 +58,29 @@ let width_status = false;
 let create_width_button_bool = true;
 
 let create_status_button = () => {
-  let target = document.querySelector('#end');
+  let target = document.querySelector("#end");
 
   if (!target) {
     setTimeout(() => {
       create_status_button();
     }, 2000);
   } else {
-    let elem = document.createElement('button');
-    elem.innerHTML = 'Theatre';
-    elem.id = 'lexcode_button_theatre';
-    elem.type = 'submit';
-    elem.name = 'formBtn';
+    let elem = document.createElement("button");
+    elem.innerHTML = "Theatre";
+    elem.id = "lexcode_button_theatre";
+    elem.type = "submit";
+    elem.name = "formBtn";
     elem.style =
-      'font-size: 12px; padding: 10px; margin: 5px; border-radius: 8px; border: 2px solid #FF2E2E; background-color: #333333; color: #FF2E2E;';
+      "font-size: 12px; padding: 10px; margin: 5px; border-radius: 8px; border: 2px solid #FF2E2E; background-color: #333333; color: #FF2E2E;";
     target.appendChild(elem);
     create_button = false;
-    sts_button = document.querySelector('#lexcode_button_theatre');
+    sts_button = document.querySelector("#lexcode_button_theatre");
   }
 };
 
 let create_width_button = () => {
   let target = document.querySelector(
-    '#movie_player > div.ytp-chrome-bottom > div.ytp-chrome-controls > div.ytp-right-controls'
+    "#movie_player > div.ytp-chrome-bottom > div.ytp-chrome-controls > div.ytp-right-controls",
   );
 
   if (!target) {
@@ -88,45 +88,45 @@ let create_width_button = () => {
       create_width_button();
     }, 2000);
   } else {
-    let elem = document.createElement('button');
-    elem.id = 'lexcode_button_width';
-    elem.className = 'ytp-button';
-    elem.type = 'submit';
-    elem.name = 'formBtn';
+    let elem = document.createElement("button");
+    elem.id = "lexcode_button_width";
+    elem.className = "ytp-button";
+    elem.type = "submit";
+    elem.name = "formBtn";
     elem.style =
-      'font-size: 12px; border-radius: 8px; margin-right: 10px; border: 2px solid #ddccff; color: #ddccff;';
+      "font-size: 12px; border-radius: 8px; margin-right: 10px; border: 2px solid #ddccff; color: #ddccff;";
     target.prepend(elem);
     create_width_button_bool = false;
-    width_button = document.querySelector('#lexcode_button_width');
+    width_button = document.querySelector("#lexcode_button_width");
   }
 };
 
 let create_chat_button = () => {
   if (!chat_button_created) {
-    let target = document.querySelector('#end');
+    let target = document.querySelector("#end");
 
     if (!target) {
       setTimeout(() => {
         create_chat_button();
       }, 2000);
     } else {
-      let elem = document.createElement('button');
-      elem.innerHTML = 'Move Chat';
-      elem.id = 'lexcode_button_move-chat';
-      elem.type = 'submit';
-      elem.name = 'formBtn';
+      let elem = document.createElement("button");
+      elem.innerHTML = "Move Chat";
+      elem.id = "lexcode_button_move-chat";
+      elem.type = "submit";
+      elem.name = "formBtn";
       elem.style =
-        'font-size: 12px; padding: 10px; margin: 5px; border-radius: 8px; border: 2px solid #FFFFFF; background-color: #333333; color: #FFFFFF;';
+        "font-size: 12px; padding: 10px; margin: 5px; border-radius: 8px; border: 2px solid #FFFFFF; background-color: #333333; color: #FFFFFF;";
       target.appendChild(elem);
       create_button = false;
-      mv_chat = document.querySelector('#lexcode_button_move-chat');
+      mv_chat = document.querySelector("#lexcode_button_move-chat");
     }
     chat_button_created = true;
   }
 };
 
 let update_button_status = (color) => {
-  let bt = document.querySelector('#lexcode_button_theatre');
+  let bt = document.querySelector("#lexcode_button_theatre");
 
   if (!bt) {
     setTimeout(() => {
@@ -134,14 +134,14 @@ let update_button_status = (color) => {
     }, 2000);
   } else {
     if (color === 1) {
-      bt.style.borderColor = '#FF2E2E';
-      bt.style.color = '#FF2E2E';
+      bt.style.borderColor = "#FF2E2E";
+      bt.style.color = "#FF2E2E";
     } else if (color === 0) {
-      bt.style.borderColor = '#4CAF50';
-      bt.style.color = '#4CAF50';
+      bt.style.borderColor = "#4CAF50";
+      bt.style.color = "#4CAF50";
     } else {
-      bt.style.borderColor = '#FFFFFF';
-      bt.style.color = '#FFFFFF';
+      bt.style.borderColor = "#FFFFFF";
+      bt.style.color = "#FFFFFF";
     }
   }
 };
@@ -163,38 +163,38 @@ let init_vars = (cb) => {
     }
   };
 
-  pageManager = document.querySelector('#page-manager');
-  video = document.querySelector('video');
-  columns = document.querySelector('#columns');
-  secondary = document.querySelector('#secondary-inner');
-  masthead = document.querySelector('#masthead-container');
-  theater_container = document.querySelector('#player-full-bleed-container');
-  container = document.querySelector('#player-full-bleed-container');
+  pageManager = document.querySelector("#page-manager");
+  video = document.querySelector("video");
+  columns = document.querySelector("#columns");
+  secondary = document.querySelector("#secondary-inner");
+  masthead = document.querySelector("#masthead-container");
+  theater_container = document.querySelector("#player-full-bleed-container");
+  container = document.querySelector("#player-full-bleed-container");
 
   theater_mode_butt = document.querySelector(
-    '#movie_player > div.ytp-chrome-bottom > div.ytp-chrome-controls > div.ytp-right-controls > button.ytp-size-button.ytp-button'
+    "#movie_player > div.ytp-chrome-bottom > div.ytp-chrome-controls > div.ytp-right-controls > button.ytp-size-button.ytp-button",
   );
   fullscreen_button = document.getElementsByClassName(
-    'ytp-fullscreen-button'
+    "ytp-fullscreen-button",
   )[0];
 
-  check_variable(pageManager, '#page-manager');
-  check_variable(container, '#player-container');
-  check_variable(video, 'video');
-  check_variable(columns, '#columns');
-  check_variable(secondary, '#secondary-inner');
-  check_variable(masthead, '#masthead-container');
-  check_variable(theater_container, '#player-wide-container');
+  check_variable(pageManager, "#page-manager");
+  check_variable(container, "#player-container");
+  check_variable(video, "video");
+  check_variable(columns, "#columns");
+  check_variable(secondary, "#secondary-inner");
+  check_variable(masthead, "#masthead-container");
+  check_variable(theater_container, "#player-wide-container");
 
   setTimeout(() => {
-    get_original(container_original_class, container, 'class');
-    get_original(container_original_style, container, 'style');
-    get_original(video_original_style, video, 'style');
-    get_original(video_original_height, video, 'height');
-    get_original(video_original_width, video, 'width');
-    get_original(columns_original_style, columns, 'style');
-    get_original(secondary_original_style, secondary, 'style');
-    get_original(masthead_original_style, masthead, 'style');
+    get_original(container_original_class, container, "class");
+    get_original(container_original_style, container, "style");
+    get_original(video_original_style, video, "style");
+    get_original(video_original_height, video, "height");
+    get_original(video_original_width, video, "width");
+    get_original(columns_original_style, columns, "style");
+    get_original(secondary_original_style, secondary, "style");
+    get_original(masthead_original_style, masthead, "style");
     if (video) {
       video_original_minHeight = video.minHeight;
       video_original_minWidth = video.minWidth;
@@ -206,51 +206,51 @@ let init_vars = (cb) => {
   }, 2000);
 
   if (!theater_container) {
-    click(document.getElementsByClassName('ytp-size-button').item(0));
+    click(document.getElementsByClassName("ytp-size-button").item(0));
   }
   masthead_vars_initialized = true;
   vars_initialized = true;
-  if (cb != 'none') {
+  if (cb != "none") {
     cb();
   }
 };
 
 let init_masthead_vars = (cb) => {
-  masthead = document.querySelector('#masthead-container');
+  masthead = document.querySelector("#masthead-container");
 
   if (!masthead) {
-    masthead = document.querySelector('#masthead-container');
+    masthead = document.querySelector("#masthead-container");
   } else {
     console.log(`failed to get masthead`);
   }
 
   setTimeout(() => {
-    masthead_original_style = masthead.getAttribute('style');
+    masthead_original_style = masthead.getAttribute("style");
   }, 2000);
 
   masthead_vars_initialized = true;
 
-  if (cb != 'none') {
+  if (cb != "none") {
     cb();
   }
 };
 
 let find_button_and_status = (what_to_return) => {
-  'use strict';
-  let element_collection = document.getElementsByClassName('ytp-size-button');
+  "use strict";
+  let element_collection = document.getElementsByClassName("ytp-size-button");
   let button = element_collection.item(0);
 
-  if (what_to_return == 'button') {
+  if (what_to_return == "button") {
     return button;
-  } else if (what_to_return == 'status') {
-    let status_collection = document.getElementsByTagName('ytd-watch-flexy');
+  } else if (what_to_return == "status") {
+    let status_collection = document.getElementsByTagName("ytd-watch-flexy");
     let ytd_watch_flexy = status_collection.item(0);
     return ytd_watch_flexy.theater;
   }
 };
 
 let is_live = () => {
-  let chat = document.getElementById('chat');
+  let chat = document.getElementById("chat");
   if (chat) {
     create_chat_button();
     return true;
@@ -265,22 +265,22 @@ let is_truffle = () => {
 };
 
 let video_exists = (debug) => {
-  'use strict';
+  "use strict";
   let button_status;
   let button;
 
-  button = find_button_and_status('button');
+  button = find_button_and_status("button");
 
   if (debug) {
-    console.debug('[set_theatre] Page Fully Loaded');
+    console.debug("[set_theatre] Page Fully Loaded");
   }
 
-  button_status = find_button_and_status('status');
+  button_status = find_button_and_status("status");
 
   if (debug) {
     //console.dir(button);
     console.log(
-      `[set-theatre] button_dataset_tooltip: ${button.dataset.titleNoTooltip}`
+      `[set-theatre] button_dataset_tooltip: ${button.dataset.titleNoTooltip}`,
     );
     console.log(`[set-theatre] button title: ${button.title}`);
     console.log(`[set-theatre] button status: ${button_status}`);
@@ -299,7 +299,7 @@ let video_exists = (debug) => {
     if (debug) {
       console.debug(`[set_theatre] Video is not in theatre mode`);
     }
-    click(document.getElementsByClassName('ytp-size-button').item(0));
+    click(document.getElementsByClassName("ytp-size-button").item(0));
     if (!custom_nav_bar) {
       lower_nav_bar();
     }
@@ -313,7 +313,7 @@ let video_exists = (debug) => {
 };
 
 let lower_nav_bar = () => {
-  'use strict';
+  "use strict";
   if (!masthead_vars_initialized) {
     init_masthead_vars(lower_nav_bar);
   } else {
@@ -321,7 +321,7 @@ let lower_nav_bar = () => {
       if (hidden_button) {
         hidden_button.remove();
       }
-      masthead.setAttribute('style', masthead_new_style);
+      masthead.setAttribute("style", masthead_new_style);
       console.info(`[set-theatre] nav bar lowered`);
       update_button_status(0);
       custom_nav_bar = true;
@@ -330,11 +330,11 @@ let lower_nav_bar = () => {
 };
 
 let restore_nav_bar = () => {
-  'use strict';
+  "use strict";
   if (!masthead_vars_initialized) {
     init_masthead_vars(restore_nav_bar);
   } else {
-    masthead.removeAttribute('style');
+    masthead.removeAttribute("style");
     console.info(`[set-theatre] nav bar restored`);
     update_button_status(1);
     custom_nav_bar = false;
@@ -342,9 +342,9 @@ let restore_nav_bar = () => {
 };
 
 let click = (cb) => {
-  'use strict';
+  "use strict";
   if (cb) {
-    let evt = new MouseEvent('click', {
+    let evt = new MouseEvent("click", {
       bubbles: true,
       cancelable: true,
       view: window,
@@ -357,9 +357,9 @@ let click = (cb) => {
 };
 
 let double_click = (cb) => {
-  'use strict';
+  "use strict";
   if (cb) {
-    let evt = new MouseEvent('dblclick', {
+    let evt = new MouseEvent("dblclick", {
       bubbles: true,
       cancelable: true,
       view: window,
@@ -371,7 +371,7 @@ let double_click = (cb) => {
 };
 
 let expand_video = () => {
-  'use strict';
+  "use strict";
   let was_paused = false;
   let live_status = is_live();
   if (!vars_initialized) {
@@ -387,19 +387,19 @@ let expand_video = () => {
         if (hidden_button) {
           hidden_button.remove();
         }
-        button = find_button_and_status('button');
-        container.setAttribute('style', container_new_style);
-        theater_container = video.setAttribute('height', 'auto');
-        video.setAttribute('width', '100vw');
-        video.setAttribute('height', 'auto');
-        video.minHeight = 'auto';
-        video.minWidth = '100vw';
-        video.style.width = 'auto';
-        video.style.top = '0';
-        video.style.left = '0';
-        video.style.height = '100%';
-        video.overflow = 'hidden';
-        columns.setAttribute('style', columns_new_style);
+        button = find_button_and_status("button");
+        container.setAttribute("style", container_new_style);
+        theater_container = video.setAttribute("height", "auto");
+        video.setAttribute("width", "100vw");
+        video.setAttribute("height", "auto");
+        video.minHeight = "auto";
+        video.minWidth = "100vw";
+        video.style.width = "auto";
+        video.style.top = "0";
+        video.style.left = "0";
+        video.style.height = "100%";
+        video.overflow = "hidden";
+        columns.setAttribute("style", columns_new_style);
         custom_video = true;
         if (was_paused) {
           video.play();
@@ -422,26 +422,26 @@ let expand_video = () => {
 };
 
 let move_chat = (direction) => {
-  secondary = document.querySelector('#secondary-inner');
+  secondary = document.querySelector("#secondary-inner");
   if (secondary) {
     if (direction == 0) {
-      secondary.style.marginTop = '110vh';
+      secondary.style.marginTop = "110vh";
       chat_dir = true;
     } else if (direction == 1) {
-      secondary.style.marginTop = '0vh';
+      secondary.style.marginTop = "0vh";
       chat_dir = false;
     }
   }
 };
 
 let restore_video = () => {
-  'use strict';
+  "use strict";
   let was_paused = false;
   let live_status = is_live();
   if (!vars_initialized) {
     init_vars(restore_video);
     console.log(
-      `[set-theatre] vars !initialized in restore-video ${vars_initialized}`
+      `[set-theatre] vars !initialized in restore-video ${vars_initialized}`,
     );
   } else {
     if (video.paused) {
@@ -450,33 +450,33 @@ let restore_video = () => {
       video.pause();
     }
     if (container_original_style == null) {
-      container.removeAttribute('style');
+      container.removeAttribute("style");
     } else {
-      container.setAttribute('style', container_original_style);
+      container.setAttribute("style", container_original_style);
     }
     if (secondary_original_style == null) {
-      secondary.removeAttribute('style');
+      secondary.removeAttribute("style");
     } else {
-      secondary.setAttribute('style', secondary_original_style);
+      secondary.setAttribute("style", secondary_original_style);
     }
     if (container_original_class == null) {
-      container.removeAttribute('class');
+      container.removeAttribute("class");
     } else {
-      container.setAttribute('class', container_original_class);
+      container.setAttribute("class", container_original_class);
     }
     if (video_original_style == null) {
-      video.removeAttribute('style');
+      video.removeAttribute("style");
     } else {
-      video.setAttribute('style', video_original_style);
+      video.setAttribute("style", video_original_style);
     }
     if (columns_original_style == null) {
       columns.setAttribute(
-        'style',
-        'position: absolute; margin-left: 0px; margin-right: 0px; top: 50px; width: 100%; min-width: 100%;'
+        "style",
+        "position: absolute; margin-left: 0px; margin-right: 0px; top: 50px; width: 100%; min-width: 100%;",
       );
     } else {
-      columns.setAttribute('style', columns_original_style);
-      columns.style.top = '0vh';
+      columns.setAttribute("style", columns_original_style);
+      columns.style.top = "0vh";
     }
     video.height = video_original_height;
     video.width = video_original_width;
@@ -506,11 +506,11 @@ let restore_video = () => {
 };
 
 let main = () => {
-  'use strict';
-  console.info('[set_theatre] main');
+  "use strict";
+  console.info("[set_theatre] main");
 
   setTimeout(function () {
-    init_vars('none');
+    init_vars("none");
   }, 2000);
   if (create_button) {
     create_status_button();
@@ -524,7 +524,7 @@ let main = () => {
 };
 
 let site = () => {
-  'use strict';
+  "use strict";
   if (window.location.href != current_page) {
     window.history.__proto__.pushState = (a, b, url) => {
       console.debug(`[set-theatre] state: ${a}`);
@@ -535,13 +535,13 @@ let site = () => {
   if (is_site() === true) {
     main();
   } else {
-    console.info('[set_theatre] Ignore this page');
+    console.info("[set_theatre] Ignore this page");
     non_video_mode();
   }
 };
 
 let is_site = () => {
-  'use strict';
+  "use strict";
   if (window.location.href.match(/https?:\/\/www\.youtube\.com\/watch\.*/)) {
     return true;
   } else {
@@ -550,7 +550,7 @@ let is_site = () => {
 };
 
 let key_pressed = (evt) => {
-  'use strict';
+  "use strict";
   /*if (!vars_initialized) {
     init_vars();
   }
@@ -564,29 +564,29 @@ let key_pressed = (evt) => {
 };
 
 let clicked = (e) => {
-  'use strict';
+  "use strict";
   if (clip_button && is_site()) {
     if (e.target) {
-      if (e.target.parentNode.textContent == 'Clip\n  Clip\n\n') {
-        console.log('[set-theatre] clicked clip container interaction layer?');
+      if (e.target.parentNode.textContent == "Clip\n  Clip\n\n") {
+        console.log("[set-theatre] clicked clip container interaction layer?");
         clip_mode();
-      } else if (e.target.textContent == 'Clip\n  Clip\n\n') {
+      } else if (e.target.textContent == "Clip\n  Clip\n\n") {
         //clip link/button container
-        console.log('[set-theatre] clicked clip container');
+        console.log("[set-theatre] clicked clip container");
         clip_mode();
       } else if (
-        e.target.id == 'text' &&
-        e.target.textContent == 'Discard clip'
+        e.target.id == "text" &&
+        e.target.textContent == "Discard clip"
       ) {
         //discard clip button
-        console.log('[set-theatre] clicked discard clip');
+        console.log("[set-theatre] clicked discard clip");
         un_clip_mode();
       } else if (
-        (e.target.iconName && e.target.iconName == 'scissors') ||
-        (e.target.id == 'text' && e.target.textContent == 'Clip')
+        (e.target.iconName && e.target.iconName == "scissors") ||
+        (e.target.id == "text" && e.target.textContent == "Clip")
       ) {
         //scissors icon or clip text
-        console.log('[set-theatre] clicked clip');
+        console.log("[set-theatre] clicked clip");
         clip_mode();
       }
     }
@@ -594,47 +594,47 @@ let clicked = (e) => {
 };
 
 let non_video_mode = () => {
-  'use strict';
+  "use strict";
   restore_nav_bar();
   update_button_status(3);
 };
 
 let un_clip_mode = () => {
-  'use strict';
+  "use strict";
   manual_override = false;
   if (!custom_nav_bar || !custom_video) {
     expand_video();
     lower_nav_bar();
   }
-  if (!find_button_and_status('status')) {
-    click(document.getElementsByClassName('ytp-size-button').item(0));
+  if (!find_button_and_status("status")) {
+    click(document.getElementsByClassName("ytp-size-button").item(0));
   }
 };
 
 let clip_mode = () => {
-  'use strict';
+  "use strict";
   manual_override = true;
   if (custom_nav_bar || custom_video) {
     restore_nav_bar();
     restore_video();
   }
-  if (find_button_and_status('status')) {
-    click(document.getElementsByClassName('ytp-size-button').item(0));
+  if (find_button_and_status("status")) {
+    click(document.getElementsByClassName("ytp-size-button").item(0));
   }
 };
 
-window.addEventListener('keydown', (e) => {
+window.addEventListener("keydown", (e) => {
   key_pressed(e);
 });
-document.addEventListener('yt-navigate-finish', (e) => {
+document.addEventListener("yt-navigate-finish", (e) => {
   manual_override = false;
   site();
 });
 
-document.addEventListener('click', (e) => {
+document.addEventListener("click", (e) => {
   clicked(e);
 
-  const target = e.target.closest('#lexcode_button_theatre'); // Or any other selector.
+  const target = e.target.closest("#lexcode_button_theatre"); // Or any other selector.
 
   if (target) {
     if (custom_nav_bar || custom_video) {
@@ -644,7 +644,7 @@ document.addEventListener('click', (e) => {
     }
   }
 
-  const width_button = e.target.closest('#lexcode_button_width');
+  const width_button = e.target.closest("#lexcode_button_width");
 
   if (width_button) {
     let change_status = () => {
@@ -657,21 +657,21 @@ document.addEventListener('click', (e) => {
 
     if (video) {
       if (width_status) {
-        video.width = '100vw';
-        video.style.width = '100vw';
-        video.minWidth = '100vw';
-        video.setAttribute('width', '100vw');
+        video.width = "100vw";
+        video.style.width = "100vw";
+        video.minWidth = "100vw";
+        video.setAttribute("width", "100vw");
       } else {
-        video.width = '99vw';
-        video.style.width = '99vw';
-        video.minWidth = '99vw';
-        video.setAttribute('width', '99vw');
+        video.width = "99vw";
+        video.style.width = "99vw";
+        video.minWidth = "99vw";
+        video.setAttribute("width", "99vw");
       }
     }
     change_status();
   }
 
-  const cht = e.target.closest('#lexcode_button_move-chat');
+  const cht = e.target.closest("#lexcode_button_move-chat");
 
   if (cht) {
     if (chat_dir) {
@@ -683,7 +683,7 @@ document.addEventListener('click', (e) => {
 });
 
 (() => {
-  'use strict';
+  "use strict";
   window.history.__proto__.pushState = function (a, b, url) {
     window.location.href = url;
     current_page = url;

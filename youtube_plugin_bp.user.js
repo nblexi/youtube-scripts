@@ -17,30 +17,30 @@ let create_button = true;
 let sts_button;
 
 let create_status_button = () => {
-  'use strict';
-  let target = document.querySelector('#end');
+  "use strict";
+  let target = document.querySelector("#end");
 
   if (!target) {
     setTimeout(() => {
       create_status_button();
     }, 2000);
   } else {
-    let elem = document.createElement('button');
-    elem.innerHTML = 'BOILERPLATE';
-    elem.id = 'lexcode_button_BOILERPLATE';
-    elem.type = 'submit';
-    elem.name = 'formBtn';
+    let elem = document.createElement("button");
+    elem.innerHTML = "BOILERPLATE";
+    elem.id = "lexcode_button_BOILERPLATE";
+    elem.type = "submit";
+    elem.name = "formBtn";
     elem.style =
-      'font-size: 12px; padding: 10px; margin: 5px; border-radius: 8px; border: 2px solid #FF2E2E; background-color: #333333; color: #FF2E2E;';
+      "font-size: 12px; padding: 10px; margin: 5px; border-radius: 8px; border: 2px solid #FF2E2E; background-color: #333333; color: #FF2E2E;";
     target.appendChild(elem);
     create_button = false;
-    sts_button = document.querySelector('#lexcode_button_BOILERPLATE');
+    sts_button = document.querySelector("#lexcode_button_BOILERPLATE");
   }
 };
 
 let update_button_status = (color) => {
-  'use strict';
-  let bt = document.querySelector('#lexcode_button_BOILERPLATE');
+  "use strict";
+  let bt = document.querySelector("#lexcode_button_BOILERPLATE");
   if (!bt) {
     setTimeout(() => {
       update_button_status(color);
@@ -48,22 +48,22 @@ let update_button_status = (color) => {
   } else {
     if (color === 1) {
       //red
-      bt.style.borderColor = '#FF2E2E';
-      bt.style.color = '#FF2E2E';
+      bt.style.borderColor = "#FF2E2E";
+      bt.style.color = "#FF2E2E";
     } else if (color === 0) {
       //green
-      bt.style.borderColor = '#4CAF50';
-      bt.style.color = '#4CAF50';
+      bt.style.borderColor = "#4CAF50";
+      bt.style.color = "#4CAF50";
     } else {
       //white
-      bt.style.borderColor = '#FFFFFF';
-      bt.style.color = '#FFFFFF';
+      bt.style.borderColor = "#FFFFFF";
+      bt.style.color = "#FFFFFF";
     }
   }
 };
 
 let main = () => {
-  'use strict';
+  "use strict";
 
   if (create_button) {
     create_status_button();
@@ -72,7 +72,7 @@ let main = () => {
 };
 
 let site = () => {
-  'use strict';
+  "use strict";
   if (window.location.href != current_page) {
     window.history.__proto__.pushState = (a, b, url) => {
       console.debug(`[BOILERPLATE] state: ${a}`);
@@ -83,12 +83,12 @@ let site = () => {
   if (is_site()) {
     main();
   } else {
-    console.info('[BOILERPLATE] Ignore this page');
+    console.info("[BOILERPLATE] Ignore this page");
   }
 };
 
 let is_site = () => {
-  'use strict';
+  "use strict";
   if (window.location.href.match(/https?:\/\/www\.youtube\.com\/watch\.*/)) {
     return true;
   } else {
@@ -104,12 +104,12 @@ document.addEventListener('click', (e) => {
   console.log(`[BOILERPLATE] click ${e}`);
 });*/
 
-document.addEventListener('yt-navigate-finish', (e) => {
+document.addEventListener("yt-navigate-finish", (e) => {
   site();
 });
 
-document.addEventListener('click', function (e) {
-  const target = e.target.closest('#lexcode_button_BOILERPLATE'); // Or any other selector.
+document.addEventListener("click", function (e) {
+  const target = e.target.closest("#lexcode_button_BOILERPLATE"); // Or any other selector.
 
   if (target) {
     if (TEMPLATE_state) {
@@ -123,7 +123,7 @@ document.addEventListener('click', function (e) {
 });
 
 (() => {
-  'use strict';
+  "use strict";
   window.history.__proto__.pushState = function (a, b, url) {
     window.location.href = url;
     current_page = url;
