@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         pretify youtube
-// @version      0.0.4
+// @version      0.0.5
 // @description  new UI bad
 // @author       lexi
 // @match        https://www.youtube.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
-// @downloadURL  https://raw.githubusercontent.com/nblexi/youtube-scripts/main/content.user.js
-// @updateURL    https://raw.githubusercontent.com/nblexi/youtube-scripts/main/content.user.js
+// @downloadURL  https://raw.githubusercontent.com/nblexi/youtube-scripts/main/remove_content.user.js
+// @updateURL    https://raw.githubusercontent.com/nblexi/youtube-scripts/main/remove_content.user.js
 // @grant        none
 // @run-at       document-start
 // ==/UserScript==

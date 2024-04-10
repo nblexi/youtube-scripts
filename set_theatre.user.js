@@ -387,7 +387,7 @@ let expand_video = () => {
         if (hidden_button) {
           hidden_button.remove();
         }
-        button = find_button_and_status('button');
+        //button = find_button_and_status('button');
         container.setAttribute('style', container_new_style);
         theater_container = video.setAttribute('height', 'auto');
         video.setAttribute('width', '100vw');
