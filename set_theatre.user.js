@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         better youtube theater
-// @version      0.9.3
+// @version      0.9.4
 // @description  expand video
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -184,7 +184,7 @@ let init_vars = (cb) => {
   check_variable(columns, '#columns');
   check_variable(secondary, '#secondary-inner');
   check_variable(masthead, '#masthead-container');
-  check_variable(theater_container, '#player-wide-container');
+  check_variable(theater_container, '#player-full-bleed-container');
 
   setTimeout(() => {
     get_original(container_original_class, container, 'class');
@@ -243,7 +243,7 @@ let find_button_and_status = (what_to_return) => {
   if (what_to_return == 'button') {
     return button;
   } else if (what_to_return == 'status') {
-    let status_collection = document.getElementsByTagName('ytd-watch-flexy');
+    let status_collection = document.getElementsByTagName('ytd-watch-grid');
     let ytd_watch_flexy = status_collection.item(0);
     return ytd_watch_flexy.theater;
   }
