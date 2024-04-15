@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Theater Mode
-// @version      0.0.2
+// @version      0.0.3
 // @description  expand video
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -313,17 +313,28 @@ document.addEventListener('click', (e) => {
 
     if (width_button) {
       let movie_player = document.querySelector(movie_playerElement);
-      if (movie_player) {
+      video = document.querySelector(videoElement);
+      if (movie_player && video) {
         if (width_status) {
           movie_player.width = '100vw';
           movie_player.style.width = '100vw';
           movie_player.minWidth = '100vw';
           movie_player.setAttribute('width', '100vw');
+
+          video.width = '100vw';
+          video.style.width = '100vw';
+          video.minWidth = '100vw';
+          video.setAttribute('width', '100vw');
         } else {
           movie_player.width = '99vw';
           movie_player.style.width = '99vw';
           movie_player.minWidth = '99vw';
           movie_player.setAttribute('width', '99vw');
+
+          video.width = '99vw';
+          video.style.width = '99vw';
+          video.minWidth = '99vw';
+          video.setAttribute('width', '99vw');
         }
       }
 
