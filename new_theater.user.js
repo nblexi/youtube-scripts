@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         new youtube theater
-// @version      0.0.3
+// @version      0.0.4
 // @description  expand video
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -270,15 +270,6 @@ let main = () => {
   }, 500);
 };
 
-let update_window_history = () => {
-  window.history.__proto__.pushState = (a, b, url) => {
-    console.debug(`[theatre] state: ${a}`);
-    console.debug(`[theatre] ??: ${b}`);
-    window.location.href = url;
-    current_page = url;
-  };
-};
-
 let is_video = () => {
   'use strict';
 
@@ -293,7 +284,12 @@ let site = () => {
   'use strict';
 
   if (window.location.href != current_page) {
-    update_window_history();
+    window.history.__proto__.pushState = (a, b, url) => {
+      //console.debug(`[theatre] state: ${a}`);
+      //console.debug(`[theatre] ??: ${b}`);
+      window.location.href = url;
+      current_page = url;
+    };
   }
   if (is_video() === true) {
     main();
@@ -343,5 +339,8 @@ document.addEventListener('click', (e) => {
 (() => {
   'use strict';
 
-  update_window_history();
+  window.history.__proto__.pushState = (a, b, url) => {
+    window.location.href = url;
+    current_page = url;
+  };
 })();
