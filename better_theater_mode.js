@@ -1,12 +1,12 @@
 // ==UserScript==
-// @name         new youtube theater
-// @version      0.0.4
+// @name         Theater Mode
+// @version      0.0.1
 // @description  expand video
 // @author       lexi
 // @match        https://www.youtube.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
-// @downloadURL  https://raw.githubusercontent.com/nblexi/youtube-scripts/main/better_theatre.user.js
-// @updateURL    https://raw.githubusercontent.com/nblexi/youtube-scripts/main/better_theatre.user.js
+// @downloadURL  https://raw.githubusercontent.com/nblexi/youtube-scripts/main/better_theater_mode.user.js
+// @updateURL    https://raw.githubusercontent.com/nblexi/youtube-scripts/main/better_theater_mode.user.js
 // @grant        none
 // @run-at       document-start
 // ==/UserScript==
