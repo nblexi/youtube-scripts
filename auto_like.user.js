@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         youtube likes
-// @version      0.9.5
+// @version      0.9.6
 // @description  auto like youtube videos
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -61,32 +61,44 @@ let create_custom_like_status_button = () => {
 let update_custom_like_button = (inv) => {
   'use strict';
 
+  let set_color = (color) => {
+    switch (color) {
+      case 'green':
+        custom_like_button.style.borderColor = '#4CAF50';
+        custom_like_button.style.color = '#4CAF50';
+        custom_like_button.style.backgroundColor = 'rgba(76, 175, 80, 0.5)';
+        break;
+      case 'red':
+        custom_like_button.style.borderColor = '#FF2E2E';
+        custom_like_button.style.color = '#FF2E2E';
+        custom_like_button.style.backgroundColor = 'rgba(255, 46, 46, 0.5)';
+        break;
+      case 'white':
+      default:
+        custom_like_button.style.borderColor = '#FFFFFF';
+        custom_like_button.style.color = '#FFFFFF';
+        custom_like_button.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+    }
+  };
+
   let custom_like_button = document.querySelector('#custom_like_button');
 
   if (!custom_like_button) {
     setTimeout(() => {
       update_custom_like_button(inv);
-    }, 2000);
+    }, 500);
   } else {
     if (inv) {
       if (like_button_status()) {
-        custom_like_button.style.borderColor = '#4CAF50';
-        custom_like_button.style.color = '#4CAF50';
-        custom_like_button.style.backgroundColor = 'rgba(76, 175, 80, 0.5)';
+        set_color('green');
       } else {
-        custom_like_button.style.borderColor = '#FFFFFF';
-        custom_like_button.style.color = '#FFFFFF';
-        custom_like_button.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+        set_color('white');
       }
     } else {
       if (like_button_status()) {
-        custom_like_button.style.borderColor = '#FFFFFF';
-        custom_like_button.style.color = '#FFFFFF';
-        custom_like_button.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+        set_color('white');
       } else {
-        custom_like_button.style.borderColor = '#4CAF50';
-        custom_like_button.style.color = '#4CAF50';
-        custom_like_button.style.backgroundColor = 'rgba(76, 175, 80, 0.5)';
+        set_color('green');
       }
     }
   }
@@ -216,6 +228,10 @@ document.addEventListener('yt-navigate-finish', (e) => {
 
 document.addEventListener('click', function (e) {
   const auto_like_button = e.target.closest('#auto_like_button'); // Or any other selector.
+  const custom_like_button = e.target.closest('#custom_like_button');
+  const youtube_player_like_button = e.target.closest(
+    youtube_like_button_element
+  );
 
   if (auto_like_button) {
     if (auto_like_enabled === true) {
@@ -228,14 +244,9 @@ document.addEventListener('click', function (e) {
     }
   }
 
-  const custom_like_button = e.target.closest('#custom_like_button');
   if (custom_like_button) {
     like_video();
   }
-
-  const youtube_player_like_button = e.target.closest(
-    youtube_like_button_element
-  );
 
   if (youtube_player_like_button) {
     update_custom_like_button(true);
