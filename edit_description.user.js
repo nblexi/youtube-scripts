@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         expand youtube video description
-// @version      0.4.6
+// @version      0.4.7
 // @description  edit description by auto-expanding and adding like information
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -14,6 +14,7 @@
 let current_page;
 let loaded_like_count;
 let elems_created = false;
+let shorts_shelf_element = '#contents > ytd-reel-shelf-renderer';
 
 let expand_description = () => {
   setTimeout(() => {
@@ -28,8 +29,21 @@ let expand_description = () => {
     } else {
       see_more.click();
       console.info('[description] expanded description');
+      remove_shorts();
     }
   }, 2000);
+};
+
+let remove_shorts = () => {
+  let shorts_shelf = document.querySelector(shorts_shelf_element);
+  if (!shorts_shelf) {
+    setTimeout(() => {
+      expand_description();
+    }, 2000);
+  } else {
+    shorts_shelf.remove();
+    console.info('[description] removed shorts');
+  }
 };
 
 let main = () => {
