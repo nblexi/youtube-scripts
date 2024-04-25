@@ -41,7 +41,7 @@ let remove_shorts = () => {
     }, 2000);
   } else {
     shorts_shelf.remove();
-    console.info('[edit_description.js] removed shorts');
+    console.info('[edit_description.js] removed shorts shelf');
   }
 };
 

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Theater Mode
-// @version      0.0.5
+// @version      0.0.6
 // @description  expand video
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -109,7 +109,6 @@ let set_to_theater_mode = () => {
 let init_vars = (cb) => {
   'use strict';
 
-  console.log(cb);
   let check_variable = (v, ident) => {
     'use strict';
 
