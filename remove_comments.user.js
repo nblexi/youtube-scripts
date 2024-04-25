@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         remove youtube comments
-// @version      0.8.4
+// @version      0.8.5
 // @description  youtube comments are a cesspool
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -24,7 +24,7 @@ let comment_visibility = () => {
         comment_visibility();
       }, 2000);
     } else {
-      console.info('[comments] removed comments');
+      console.info('[remove_comments.js] removed comments');
       commentsvisible = false;
       comments_section.remove();
     }
@@ -40,7 +40,7 @@ let site = () => {
   'use strict';
   if (window.location.href != current_page) {
     window.history.__proto__.pushState = (a, b, url) => {
-      console.debug(`[comments] state: ${a}`);
+      console.debug(`[remove_comments.js] state: ${a}`);
       window.location.href = url;
       current_page = url;
     };
@@ -48,7 +48,7 @@ let site = () => {
   if (is_site()) {
     main();
   } else {
-    console.info('[comments] Ignore this page');
+    console.info('[remove_comments.js] Ignore this page');
   }
 };
 

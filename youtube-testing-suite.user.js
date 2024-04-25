@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         youtube testing suite
-// @version      0.1.3
+// @version      0.1.4
 // @description  test youtube features
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -13,14 +13,14 @@
 let suite = (window.suite = {});
 let print_key_code = true;
 
-suite.print_keycode = (whatdo) => {
-  "use strict";
-  if (whatdo) {
+suite.print_keycode = (operation) => {
+  'use strict';
+  if (operation) {
     print_key_code = true;
-    output("info", `print key code now: ${print_key_code}`);
+    output('info', `print key code now: ${print_key_code}`);
   } else {
     print_key_code = false;
-    output("info", `print key code now: ${print_key_code}`);
+    output('info', `print key code now: ${print_key_code}`);
   }
 };
 
@@ -29,14 +29,14 @@ let output = (type, payload, optional) => {
   payload = payload || null;
   optional = optional || null;
 
-  let prefix = "[Testing Suite]";
+  let prefix = '[Testing Suite]';
 
   switch (type) {
-    case "assert":
+    case 'assert':
       //assert(assertion, obj1, obj2, /* … ,*/ objN) || assert(assertion, msg)
       console.assert(optional, `${prefix} ${payload}`);
       break;
-    case "count":
+    case 'count':
       //count() || count(label) && countReset() || countReset(label)
       if (payload === null) {
         console.count();
@@ -44,7 +44,7 @@ let output = (type, payload, optional) => {
         console.count(payload);
       }
       break;
-    case "info":
+    case 'info':
       //info(obj1, /* …, */ objN)
       if (payload === null) {
         console.info(`${optional}`);
@@ -54,7 +54,7 @@ let output = (type, payload, optional) => {
         console.info(`${prefix} ${payload}`, optional);
       }
       break;
-    case "dir":
+    case 'dir':
       //dir(object)
       if (optional !== null) {
         console.log(`${prefix} ${payload}`);
@@ -63,7 +63,7 @@ let output = (type, payload, optional) => {
         console.dir(payload);
       }
       break;
-    case "dirxml":
+    case 'dirxml':
       //dirxml(object)
       if (optional !== null) {
         console.log(`${prefix} ${payload}`);
@@ -72,7 +72,7 @@ let output = (type, payload, optional) => {
         console.dirxml(payload);
       }
       break;
-    case "group":
+    case 'group':
       //group() / group(label) || groupCollapsed() && groupEnd()
       if (optional !== null) {
         console.log(`${prefix} ${payload}`);
@@ -81,7 +81,7 @@ let output = (type, payload, optional) => {
         console.group(payload);
       }
       break;
-    case "log":
+    case 'log':
       //log(obj1, /* …, */ objN)
       if (payload === null) {
         console.log(`${optional}`);
@@ -91,7 +91,7 @@ let output = (type, payload, optional) => {
         console.log(`${prefix} ${payload}`, optional);
       }
       break;
-    case "debug":
+    case 'debug':
       //debug(msg, subst1, /* …, */ substN)
       if (payload === null) {
         console.debug(`${optional}`);
@@ -101,7 +101,7 @@ let output = (type, payload, optional) => {
         console.debug(`${prefix} ${payload}`, optional);
       }
       break;
-    case "warning":
+    case 'warning':
       if (payload === null) {
         console.warn(`${optional}`);
       } else if (payload !== null && optional === null) {
@@ -110,7 +110,7 @@ let output = (type, payload, optional) => {
         console.warn(`${prefix} ${payload}`, optional);
       }
       break;
-    case "error":
+    case 'error':
       //error(obj1, /* …, */ objN)
       if (payload === null) {
         console.err(`${optional}`);
@@ -120,8 +120,8 @@ let output = (type, payload, optional) => {
         console.err(`${prefix} ${payload}`, optional);
       }
       break;
-    case "default":
-      console.warn("no type defined", payload, optional);
+    case 'default':
+      console.warn('no type defined', payload, optional);
       break;
   }
 };
@@ -140,45 +140,45 @@ let dispatchForCode = (event) => {
   return code;
 };
 
-window.addEventListener("keydown", (e) => {
+window.addEventListener('keydown', (e) => {
   if (print_key_code) {
-    output("log", "key:", dispatchForCode(e));
+    output('log', 'key:', dispatchForCode(e));
   }
 
-  if (dispatchForCode(e) === "192" || dispatchForCode(e) === "`") {
+  if (dispatchForCode(e) === '192' || dispatchForCode(e) === '`') {
     // `
-    output("debug", "manual call");
+    output('debug', 'manual call');
   }
 });
 
-window.addEventListener("hashchange", (e) => {
-  output("debug", "hashchange capture");
+window.addEventListener('hashchange', (e) => {
+  output('debug', 'hashchange capture');
 });
 
-document.addEventListener("yt-navigate-finish", (e) => {
-  output("debug", "yt-navigate-finish capture");
+document.addEventListener('yt-navigate-finish', (e) => {
+  output('debug', 'yt-navigate-finish capture');
 });
 
-document.addEventListener("yt-navigate-start", (e) => {
-  output("debug", "yt-navigate-start capture");
+document.addEventListener('yt-navigate-start', (e) => {
+  output('debug', 'yt-navigate-start capture');
 });
 
-document.addEventListener("click", (e) => {
-  output("log", "clicked", e.target);
-  output("log", "id:", e.target.id);
-  output("log", "title:", e.target.title);
-  output("log", "textContent:", e.target.textContent);
-  output("log", "innerText:", e.target.innerText);
-  output("log", "outerText:", e.target.outerText);
-  output("log", "className:", e.target.className);
-  output("log", "tagName:", e.target.tagName);
-  output("log", "nodeName:", e.target.nodeName);
-  output("log", "localName:", e.target.localName);
-  output("log", "attributes:", e.target.tagName);
-  output("dirxml", e);
+document.addEventListener('click', (e) => {
+  output('log', 'clicked', e.target);
+  output('log', 'id:', e.target.id);
+  output('log', 'title:', e.target.title);
+  output('log', 'textContent:', e.target.textContent);
+  output('log', 'innerText:', e.target.innerText);
+  output('log', 'outerText:', e.target.outerText);
+  output('log', 'className:', e.target.className);
+  output('log', 'tagName:', e.target.tagName);
+  output('log', 'nodeName:', e.target.nodeName);
+  output('log', 'localName:', e.target.localName);
+  output('log', 'attributes:', e.target.tagName);
+  output('dirxml', e);
 });
 
 (() => {
-  "use strict";
-  output("info", "youtube-testing-suite loaded");
+  'use strict';
+  output('info', 'youtube-testing-suite loaded');
 })();

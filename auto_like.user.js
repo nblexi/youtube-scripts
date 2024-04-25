@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         youtube likes
-// @version      0.9.6
+// @version      0.9.7
 // @description  auto like youtube videos
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -169,7 +169,7 @@ let like_video = () => {
 let main = () => {
   'use strict';
 
-  console.info('[auto-like] main');
+  console.info('[auto-like.js] main');
 
   if (create_auto_like_button) {
     create_auto_like_status_button();
@@ -206,7 +206,7 @@ let site = () => {
   if (is_video()) {
     main();
   } else {
-    console.info('[auto-like] ignore this page');
+    console.info('[auto-like.js] ignore this page');
 
     update_auto_like_button_status(3);
   }

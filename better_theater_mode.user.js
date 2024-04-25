@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Theater Mode
-// @version      0.0.4
+// @version      0.0.5
 // @description  expand video
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -84,7 +84,7 @@ let init_masthead_vars = (cb) => {
     masthead = tempMasthead;
     masthead_vars_initialized = true;
   } else {
-    console.warn(`[theater] failed to get ${mastheadElement}`);
+    console.warn(`[better_theater_mode.js] failed to get ${mastheadElement}`);
     masthead_vars_initialized = false;
   }
 
@@ -117,7 +117,7 @@ let init_vars = (cb) => {
     if (t) {
       v = t;
     } else {
-      console.warn(`[theater] failed to get ${ident}`);
+      console.warn(`[better_theater_mode.js] failed to get ${ident}`);
       vars_initialized = false;
     }
   };
@@ -169,7 +169,7 @@ let lower_nav_bar = () => {
       hidden_button.remove();
     }
     masthead.setAttribute('style', masthead_new_style);
-    console.info(`[theater] nav bar lowered`);
+    console.info(`[better_theater_mode.js] nav bar lowered`);
     custom_nav_bar_position = true;
   }
 };
@@ -181,7 +181,7 @@ let restore_nav_bar = () => {
     init_masthead_vars(restore_nav_bar);
   } else {
     masthead.removeAttribute('style');
-    console.info(`[theater] nav bar restored`);
+    console.info(`[better_theater_mode.js] nav bar restored`);
     custom_nav_bar_position = false;
   }
 };
@@ -238,7 +238,7 @@ let get_current_browser = () => {
 let main = () => {
   'use strict';
 
-  console.info('[theater] main');
+  console.info('[better_theater_mode.js] main');
 
   if (create_width_button_bool && get_current_browser()) {
     create_width_button();
@@ -274,7 +274,7 @@ let site = () => {
   if (is_video() === true) {
     main();
   } else {
-    console.info('[theater] ignore this page');
+    console.info('[better_theater_mode.js] ignore this page');
     restore_nav_bar();
   }
 };
