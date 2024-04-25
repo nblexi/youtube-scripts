@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Theater Mode
-// @version      0.0.3
+// @version      0.0.4
 // @description  expand video
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -23,6 +23,7 @@ let mastheadElement = '#masthead-container';
 let theater_mode_button = 'ytp-size-button';
 let ytd_watch = 'ytd-watch-grid';
 let movie_playerElement = '#movie_player';
+let playerContainerElement = 'player-container-inner';
 
 let pageManager;
 let container;
@@ -92,6 +93,19 @@ let init_masthead_vars = (cb) => {
   }
 };
 
+let set_to_theater_mode = () => {
+  //https://stackoverflow.com/questions/53584026/toggle-the-cinema-mode-on-youtube-with-javascript
+  const theaterButton = document.getElementsByClassName('ytp-size-button')?.[0];
+  theaterButton?.click?.();
+
+  const isDefaultView =
+    document.getElementById(playerContainerElement)?.children?.length === 0;
+
+  if (isDefaultView) {
+    setTimeout(() => theaterButton?.click?.(), 1);
+  }
+};
+
 let init_vars = (cb) => {
   'use strict';
 
@@ -123,12 +137,8 @@ let init_vars = (cb) => {
   check_variable(container, containerElement);
   check_variable(theater_container, theater_containerElement);
 
-  if (!theater_container) {
-    let element_collection =
-      document.getElementsByClassName(theater_mode_button);
-    let button = element_collection.item(0);
-    click(button);
-  }
+  set_to_theater_mode();
+
   if (cb != 'none') {
     cb();
   }
@@ -146,21 +156,7 @@ let video_exists = () => {
     }
   };
 
-  let element_collection = document.getElementsByClassName(theater_mode_button);
-  let button = element_collection.item(0);
-
-  let status_collection = document.getElementsByTagName(ytd_watch);
-  let theater_mode_button_status = status_collection.item(0);
-
-  if (theater_mode_button_status) {
-    set_video();
-  } else if (!theater_mode_button_status) {
-    click(button);
-    set_video();
-  } else {
-    console.info(`[theater] theater mode button is undefined`);
-    site();
-  }
+  set_video();
 };
 
 let lower_nav_bar = () => {
@@ -187,22 +183,6 @@ let restore_nav_bar = () => {
     masthead.removeAttribute('style');
     console.info(`[theater] nav bar restored`);
     custom_nav_bar_position = false;
-  }
-};
-
-let click = (element) => {
-  'use strict';
-
-  if (element) {
-    let click_event = new MouseEvent('click', {
-      bubbles: true,
-      cancelable: true,
-      view: window,
-    });
-
-    console.info(`[theater] simulated click`);
-
-    element.dispatchEvent(click_event);
   }
 };
 
@@ -305,7 +285,7 @@ document.addEventListener('yt-navigate-finish', (e) => {
   site();
 });
 
-document.addEventListener('click', (e) => {
+document.addEventListener('`click`', (e) => {
   'use strict';
 
   if (get_current_browser()) {
