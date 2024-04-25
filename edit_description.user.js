@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         expand youtube video description
-// @version      0.4.7
-// @description  edit description by auto-expanding and adding like information
+// @name         Expand Description & Remove Shorts
+// @version      0.4.9
+// @description  edit description by auto-expanding and removing shorts shelf
 // @author       lexi
 // @match        https://www.youtube.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
@@ -15,12 +15,11 @@ let current_page;
 let loaded_like_count;
 let elems_created = false;
 let shorts_shelf_element = '#contents > ytd-reel-shelf-renderer';
+let description_element = '#description #description-inline-expander #expand';
 
 let expand_description = () => {
   setTimeout(() => {
-    let see_more = document.querySelector(
-      '#description #description-inline-expander #expand'
-    );
+    let see_more = document.querySelector(description_element);
 
     if (!see_more) {
       setTimeout(() => {
@@ -28,7 +27,7 @@ let expand_description = () => {
       }, 2000);
     } else {
       see_more.click();
-      console.info('[description] expanded description');
+      console.info('[edit_description.js] expanded description');
       remove_shorts();
     }
   }, 2000);
@@ -42,7 +41,7 @@ let remove_shorts = () => {
     }, 2000);
   } else {
     shorts_shelf.remove();
-    console.info('[description] removed shorts');
+    console.info('[edit_description.js] removed shorts');
   }
 };
 
@@ -55,7 +54,7 @@ let site = () => {
   'use strict';
   if (window.location.href != current_page) {
     window.history.__proto__.pushState = (a, b, url) => {
-      console.debug(`[description] state: ${a}`);
+      console.debug(`[edit_description.js] state: ${a}`);
       window.location.href = url;
       current_page = url;
     };
@@ -63,7 +62,7 @@ let site = () => {
   if (is_site()) {
     main();
   } else {
-    console.info('[description] Ignore this page');
+    console.info('[edit_description.js] Ignore this page');
   }
 };
 
