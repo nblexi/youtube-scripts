@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Theater Mode
-// @version      0.0.6
+// @version      0.0.7
 // @description  expand video
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -284,7 +284,7 @@ document.addEventListener('yt-navigate-finish', (e) => {
   site();
 });
 
-document.addEventListener('`click`', (e) => {
+document.addEventListener('click', (e) => {
   'use strict';
 
   if (get_current_browser()) {
