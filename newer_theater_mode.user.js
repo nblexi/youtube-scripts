@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         Widescreen Theater Mode
-// @version      0.0.1
+// @version      0.0.2
 // @description  expand theater mode to cover the entire screen
 // @author       lexi
 // @match        https://www.youtube.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
-// @downloadURL  https://raw.githubusercontent.com/nblexi/youtube-scripts/main/youtube_plugin_bp.user.js
-// @updateURL    https://raw.githubusercontent.com/nblexi/youtube-scripts/main/youtube_plugin_bp.user.js
+// @downloadURL  https://raw.githubusercontent.com/nblexi/youtube-scripts/main/newer_theater_mode.user.js
+// @updateURL    https://raw.githubusercontent.com/nblexi/youtube-scripts/main/newer_theater_mode.user.js
 // @grant        none
 // ==/UserScript==
 
