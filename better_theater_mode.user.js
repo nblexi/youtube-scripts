@@ -95,14 +95,27 @@ let init_masthead_vars = (cb) => {
 
 let set_to_theater_mode = () => {
   //https://stackoverflow.com/questions/53584026/toggle-the-cinema-mode-on-youtube-with-javascript
+
+  console.log('[better_theater_mode.js] set_to_theater_mode()');
   const theaterButton = document.getElementsByClassName('ytp-size-button')?.[0];
   theaterButton?.click?.();
 
   const isDefaultView =
     document.getElementById(playerContainerElement)?.children?.length === 0;
 
+  console.log(`[better_theater_mode.js] isDefaultView: ${isDefaultView}`);
+
   if (isDefaultView) {
-    setTimeout(() => theaterButton?.click?.(), 1);
+    setTimeout(() => {
+      theaterButton?.click?.(), 1;
+
+      const isNowDefaultView =
+        document.getElementById(playerContainerElement)?.children?.length === 0;
+
+      console.log(
+        `[better_theater_mode.js] new isDefaultView: ${isNowDefaultView}`
+      );
+    });
   }
 };
 

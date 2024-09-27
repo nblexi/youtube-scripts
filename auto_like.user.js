@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         youtube likes
-// @version      0.9.7
+// @version      0.9.8
 // @description  auto like youtube videos
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -19,33 +19,34 @@ let create_auto_like_button = true;
 let create_custom_like_button = true;
 
 let youtube_like_button_element =
-  '#top-level-buttons-computed > segmented-like-dislike-button-view-model > yt-smartimation > div > div > like-button-view-model > toggle-button-view-model > button-view-model > button';
+  "#top-level-buttons-computed > segmented-like-dislike-button-view-model > yt-smartimation > div > div > like-button-view-model > toggle-button-view-model > button-view-model > button";
 
 let lbtimer;
 
 let create_custom_like_status_button = () => {
-  'use strict';
+  "use strict";
 
   let target = document.querySelector(
-    '#movie_player > div.ytp-chrome-bottom > div.ytp-chrome-controls > div.ytp-right-controls'
+    "#movie_player > div.ytp-chrome-bottom > div.ytp-chrome-controls > div.ytp-right-controls",
   );
   let lb = document.querySelector(youtube_like_button_element);
 
   if (!target) {
     setTimeout(() => {
+      console.log("waiting on autolike button creation");
       create_custom_like_status_button();
     }, 2000);
   } else {
-    let elem = document.createElement('button');
-    elem.id = 'custom_like_button';
-    elem.className = 'ytp-button';
-    elem.type = 'submit';
-    elem.name = 'formBtn';
+    let elem = document.createElement("button");
+    elem.id = "custom_like_button";
+    elem.className = "ytp-button";
+    elem.type = "submit";
+    elem.name = "formBtn";
     elem.style =
-      'font-size: 12px; border-radius: 8px; margin-right: 10px; border: 2px solid #FFFFFF; color: #FFFFFF;';
+      "font-size: 12px; border-radius: 8px; margin-right: 10px; border: 2px solid #FFFFFF; color: #FFFFFF;";
     target.prepend(elem);
     create_custom_like_button = false;
-    ytp_like_button = document.querySelector('#custom_like_button');
+    ytp_like_button = document.querySelector("#custom_like_button");
 
     if (!lb) {
       lbtimer = setInterval(() => {
@@ -59,99 +60,101 @@ let create_custom_like_status_button = () => {
 };
 
 let update_custom_like_button = (inv) => {
-  'use strict';
+  "use strict";
 
   let set_color = (color) => {
     switch (color) {
-      case 'green':
-        custom_like_button.style.borderColor = '#4CAF50';
-        custom_like_button.style.color = '#4CAF50';
-        custom_like_button.style.backgroundColor = 'rgba(76, 175, 80, 0.5)';
+      case "green":
+        custom_like_button.style.borderColor = "#4CAF50";
+        custom_like_button.style.color = "#4CAF50";
+        custom_like_button.style.backgroundColor = "rgba(76, 175, 80, 0.5)";
         break;
-      case 'red':
-        custom_like_button.style.borderColor = '#FF2E2E';
-        custom_like_button.style.color = '#FF2E2E';
-        custom_like_button.style.backgroundColor = 'rgba(255, 46, 46, 0.5)';
+      case "red":
+        custom_like_button.style.borderColor = "#FF2E2E";
+        custom_like_button.style.color = "#FF2E2E";
+        custom_like_button.style.backgroundColor = "rgba(255, 46, 46, 0.5)";
         break;
-      case 'white':
+      case "white":
       default:
-        custom_like_button.style.borderColor = '#FFFFFF';
-        custom_like_button.style.color = '#FFFFFF';
-        custom_like_button.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+        custom_like_button.style.borderColor = "#FFFFFF";
+        custom_like_button.style.color = "#FFFFFF";
+        custom_like_button.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
     }
   };
 
-  let custom_like_button = document.querySelector('#custom_like_button');
+  let custom_like_button = document.querySelector("#custom_like_button");
 
   if (!custom_like_button) {
     setTimeout(() => {
+      console.log("waiting on custon like button update");
       update_custom_like_button(inv);
     }, 500);
   } else {
     if (inv) {
       if (like_button_status()) {
-        set_color('green');
+        set_color("green");
       } else {
-        set_color('white');
+        set_color("white");
       }
     } else {
       if (like_button_status()) {
-        set_color('white');
+        set_color("white");
       } else {
-        set_color('green');
+        set_color("green");
       }
     }
   }
 };
 
 let create_auto_like_status_button = () => {
-  'use strict';
+  "use strict";
 
-  let target = document.querySelector('#end');
+  let target = document.querySelector("#end");
   if (!target) {
     setTimeout(() => {
+      console.log("waiting on autolike button status");
       create_auto_like_status_button();
     }, 2000);
   } else {
-    let elem = document.createElement('button');
-    elem.innerHTML = 'Like';
-    elem.id = 'auto_like_button';
-    elem.type = 'submit';
-    elem.name = 'formBtn';
+    let elem = document.createElement("button");
+    elem.innerHTML = "Like";
+    elem.id = "auto_like_button";
+    elem.type = "submit";
+    elem.name = "formBtn";
     elem.style =
-      'font-size: 12px; padding: 10px; margin: 5px; border-radius: 8px; border: 2px solid #FF2E2E; background-color: #333333; color: #FF2E2E;';
+      "font-size: 12px; padding: 10px; margin: 5px; border-radius: 8px; border: 2px solid #FF2E2E; background-color: #333333; color: #FF2E2E;";
     target.appendChild(elem);
     create_auto_like_button = false;
-    autoL_sts_button = document.querySelector('#auto_like_button');
+    autoL_sts_button = document.querySelector("#auto_like_button");
   }
 };
 
 let update_auto_like_button_status = (color) => {
-  'use strict';
+  "use strict";
 
-  let auto_like_button = document.querySelector('#auto_like_button');
+  let auto_like_button = document.querySelector("#auto_like_button");
   if (auto_like_button) {
     if (color === 1) {
-      auto_like_button.style.borderColor = '#FF2E2E';
-      auto_like_button.style.color = '#FF2E2E';
+      auto_like_button.style.borderColor = "#FF2E2E";
+      auto_like_button.style.color = "#FF2E2E";
     } else if (color === 0) {
-      auto_like_button.style.borderColor = '#4CAF50';
-      auto_like_button.style.color = '#4CAF50';
+      auto_like_button.style.borderColor = "#4CAF50";
+      auto_like_button.style.color = "#4CAF50";
     } else {
-      auto_like_button.style.borderColor = '#FFFFFF';
-      auto_like_button.style.color = '#FFFFFF';
+      auto_like_button.style.borderColor = "#FFFFFF";
+      auto_like_button.style.color = "#FFFFFF";
     }
   }
 };
 
 let like_button_status = () => {
-  'use strict';
+  "use strict";
 
   let like_button = document.querySelector(youtube_like_button_element);
 
-  let like_button_aria_pressed = like_button.getAttribute('aria-pressed');
+  let like_button_aria_pressed = like_button.getAttribute("aria-pressed");
 
-  if (like_button_aria_pressed == 'true' || like_button_aria_pressed == true) {
+  if (like_button_aria_pressed == "true" || like_button_aria_pressed == true) {
     return true;
   } else {
     return false;
@@ -159,7 +162,7 @@ let like_button_status = () => {
 };
 
 let like_video = () => {
-  'use strict';
+  "use strict";
 
   let like_button = document.querySelector(youtube_like_button_element);
   like_button.click();
@@ -167,9 +170,9 @@ let like_video = () => {
 };
 
 let main = () => {
-  'use strict';
+  "use strict";
 
-  console.info('[auto-like.js] main');
+  console.info("[auto-like.js] main");
 
   if (create_auto_like_button) {
     create_auto_like_status_button();
@@ -180,6 +183,7 @@ let main = () => {
   }
 
   setTimeout(() => {
+    console.log("waiting on autolike button");
     if (auto_like_enabled) {
       update_auto_like_button_status(0);
 
@@ -195,7 +199,7 @@ let main = () => {
 };
 
 let site = () => {
-  'use strict';
+  "use strict";
   if (window.location.href != current_page) {
     window.history.__proto__.pushState = (a, b, url) => {
       window.location.href = url;
@@ -206,14 +210,14 @@ let site = () => {
   if (is_video()) {
     main();
   } else {
-    console.info('[auto-like.js] ignore this page');
+    console.info("[auto-like.js] ignore this page");
 
     update_auto_like_button_status(3);
   }
 };
 
 let is_video = () => {
-  'use strict';
+  "use strict";
 
   if (window.location.href.match(/https?:\/\/www\.youtube\.com\/watch\.*/)) {
     return true;
@@ -222,15 +226,15 @@ let is_video = () => {
   }
 };
 
-document.addEventListener('yt-navigate-finish', (e) => {
+document.addEventListener("yt-navigate-finish", (e) => {
   site();
 });
 
-document.addEventListener('click', function (e) {
-  const auto_like_button = e.target.closest('#auto_like_button'); // Or any other selector.
-  const custom_like_button = e.target.closest('#custom_like_button');
+document.addEventListener("click", function (e) {
+  const auto_like_button = e.target.closest("#auto_like_button"); // Or any other selector.
+  const custom_like_button = e.target.closest("#custom_like_button");
   const youtube_player_like_button = e.target.closest(
-    youtube_like_button_element
+    youtube_like_button_element,
   );
 
   if (auto_like_button) {
@@ -254,7 +258,7 @@ document.addEventListener('click', function (e) {
 });
 
 (() => {
-  'use strict';
+  "use strict";
   window.history.__proto__.pushState = function (a, b, url) {
     window.location.href = url;
     current_page = url;
