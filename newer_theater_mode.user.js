@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Widescreen Theater Mode
-// @version      0.0.2
+// @version      0.0.3
 // @description  expand theater mode to cover the entire screen
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -56,18 +56,29 @@ let update_theater_button_status = (color) => {
       update_theater_button_status(color);
     }, 2000);
   } else {
-    if (color === "green") {
-      bt.style.borderColor = "#4CAF50";
-      bt.style.color = "#4CAF50";
-    } else if (color === "red") {
-      bt.style.borderColor = "#FF2E2E";
-      bt.style.color = "#FF2E2E";
-    } else {
-      //white
-      bt.style.borderColor = "#FFFFFF";
-      bt.style.color = "#FFFFFF";
+
+    switch (color) {
+      case "green":
+        bt.style.borderColor = "#4CAF50";
+        bt.style.color = "#4CAF50";
+        break;
+      case "red":
+        bt.style.borderColor = "#FF2E2E";
+        bt.style.color = "#FF2E2E";
+        break;
+      case "yellow":
+        bt.style.borderColor = "#FFD700";
+        bt.style.color = "#FFD700";
+        break;
+      case "white":
+        bt.style.borderColor = "#FFFFFF";
+        bt.style.color = "#FFFFFF";
+        break;
+      default:
+        bt.style.borderColor = "#ffa500";
+        bt.style.color = "#ffa500";
+        break;
     }
-  }
 };
 
 let move_nav_bar = (status) => {
@@ -257,7 +268,7 @@ document.addEventListener("click", function (e) {
         move_nav_bar(true);
       }
     } else {
-      update_theater_button_status("white");
+      update_theater_button_status("yellow");
     }
   }
 });
