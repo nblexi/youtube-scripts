@@ -56,7 +56,6 @@ let update_theater_button_status = (color) => {
       update_theater_button_status(color);
     }, 2000);
   } else {
-
     switch (color) {
       case "green":
         bt.style.borderColor = "#4CAF50";
@@ -79,6 +78,7 @@ let update_theater_button_status = (color) => {
         bt.style.color = "#ffa500";
         break;
     }
+  }
 };
 
 let move_nav_bar = (status) => {
