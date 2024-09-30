@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Widescreen Theater Mode
-// @version      0.0.5
+// @version      0.0.6
 // @description  expand theater mode to cover the entire screen
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -37,7 +37,7 @@ let create_theater_button = () => {
     elem.innerHTML = "Theater";
     elem.id = toggle_button_element;
     elem.type = "submit";
-    elem.name = "formBtn";
+    elem.name = "formtoggle_buttonn";
     elem.style =
       "font-size: 12px; padding: 10px; margin: 5px; border-radius: 8px; border: 2px solid #c3adf7; background-color: #333333; color: #c3adf7;";
     target.appendChild(elem);
@@ -49,8 +49,8 @@ let create_theater_button = () => {
 let update_theater_button_status = (color) => {
   "use strict";
 
-  let bt = document.querySelector(toggle_button_selector);
-  if (!bt) {
+  let toggle_button = document.querySelector(toggle_button_selector);
+  if (!toggle_button) {
     setTimeout(() => {
       console.log("waiting on theater button color function");
       update_theater_button_status(color);
@@ -58,24 +58,24 @@ let update_theater_button_status = (color) => {
   } else {
     switch (color) {
       case "green":
-        bt.style.borderColor = "#4CAF50";
-        bt.style.color = "#4CAF50";
+        toggle_button.style.borderColor = "#4CAF50";
+        toggle_button.style.color = "#4CAF50";
         break;
       case "red":
-        bt.style.borderColor = "#FF2E2E";
-        bt.style.color = "#FF2E2E";
+        toggle_button.style.borderColor = "#FF2E2E";
+        toggle_button.style.color = "#FF2E2E";
         break;
       case "yellow":
-        bt.style.borderColor = "#FFD700";
-        bt.style.color = "#FFD700";
+        toggle_button.style.borderColor = "#FFD700";
+        toggle_button.style.color = "#FFD700";
         break;
       case "white":
-        bt.style.borderColor = "#FFFFFF";
-        bt.style.color = "#FFFFFF";
+        toggle_button.style.borderColor = "#FFFFFF";
+        toggle_button.style.color = "#FFFFFF";
         break;
       default:
-        bt.style.borderColor = "#ffa500";
-        bt.style.color = "#ffa500";
+        toggle_button.style.borderColor = "#ffa500";
+        toggle_button.style.color = "#ffa500";
         break;
     }
   }
@@ -83,6 +83,15 @@ let update_theater_button_status = (color) => {
 
 let move_nav_bar = (status) => {
   "use strict";
+
+  let reset_nav_bar = () => {
+    content.insertBefore(masthead, content.firstChild);
+    player.removeAttribute("style");
+    masthead.removeAttribute("style");
+    columns.removeAttribute("style");
+    page_manager.removeAttribute("style");
+    nav_bar_state = false;
+  };
 
   let content = document.querySelector("#content");
   let masthead = document.querySelector("#masthead-container");
@@ -106,22 +115,12 @@ let move_nav_bar = (status) => {
       }
     } else {
       if (nav_bar_state) {
-        content.insertBefore(masthead, content.firstChild);
-        player.removeAttribute("style");
-        masthead.removeAttribute("style");
-        columns.removeAttribute("style");
-        page_manager.removeAttribute("style");
-        nav_bar_state = false;
+        reset_nav_bar();
       }
     }
   } else {
     if (nav_bar_state) {
-      content.insertBefore(masthead, content.firstChild);
-      player.removeAttribute("style");
-      masthead.removeAttribute("style");
-      columns.removeAttribute("style");
-      page_manager.removeAttribute("style");
-      nav_bar_state = false;
+      reset_nav_bar();
     }
   }
 };
@@ -201,14 +200,14 @@ let main_fn = () => {
 
   if (document.querySelector(youtube_theater_button_selector)) {
     setTimeout(() => {
-      console.log("waiting for loading complete");
+      console.log("[new_better_theater.js] waiting for loading complete");
       if (youtube_theater_mode_status()) {
         move_video(false);
       }
     }, 500);
   } else {
     setTimeout(() => {
-      console.log("waiting for youtube theater button");
+      console.log("[new_better_theater.js] waiting for youtube theater button");
       main_fn();
     }, 2000);
   }
