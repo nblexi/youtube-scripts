@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Widescreen Theater Mode
-// @version      0.0.4
+// @version      0.0.5
 // @description  expand theater mode to cover the entire screen
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -134,7 +134,7 @@ let move_video = (changed) => {
     video.removeAttribute("style");
 
     player.setAttribute("style", "height: 56.25vw;");
-    video.setAttribute("style", "width: auto;");
+    video.setAttribute("style", "width: 100%; height: auto;");
 
     theater_state = false;
     update_theater_button_status("red");
