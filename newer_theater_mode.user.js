@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Widescreen Theater Mode
-// @version      0.0.6
+// @version      0.0.7
 // @description  expand theater mode to cover the entire screen
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -15,11 +15,12 @@ let build_button = true;
 let toggle_button_element = "theater_button";
 let toggle_button_selector = `#${toggle_button_element}`;
 
-let theater_button;
-let theater_state = false; //false = default
-let nav_bar_state = false; //false = default
+let theater_state = false; //false = default theater mode
+let nav_bar_state = false; //false = default nav bar position
 
+//video container
 let player_selector = "#full-bleed-container";
+//default/theater mode switch button on player
 let youtube_theater_button_selector =
   "#movie_player > div.ytp-chrome-bottom > div.ytp-chrome-controls > div.ytp-right-controls > button.ytp-size-button.ytp-button";
 
@@ -42,7 +43,6 @@ let create_theater_button = () => {
       "font-size: 12px; padding: 10px; margin: 5px; border-radius: 8px; border: 2px solid #c3adf7; background-color: #333333; color: #c3adf7;";
     target.appendChild(elem);
     build_button = false;
-    theater_button = document.querySelector(toggle_button_selector);
   }
 };
 
@@ -81,6 +81,7 @@ let update_theater_button_status = (color) => {
   }
 };
 
+// status: true to move down, false to move to default
 let move_nav_bar = (status) => {
   "use strict";
 
@@ -125,6 +126,7 @@ let move_nav_bar = (status) => {
   }
 };
 
+//changed: true if theater mode has been modified
 let move_video = (changed) => {
   "use strict";
 
@@ -145,6 +147,7 @@ let move_video = (changed) => {
     "#movie_player > div.html5-video-container > video",
   );
 
+  //if in theater mode
   if (youtube_theater_mode_status()) {
     if (changed) {
       if (theater_state) {
@@ -191,6 +194,7 @@ let youtube_theater_mode_status = () => {
   }
 };
 
+//i was getting a weird issue with "same function name" with another script so i appended _fn to repeat functions
 let main_fn = () => {
   "use strict";
 
@@ -215,6 +219,7 @@ let main_fn = () => {
 
 let site_fn = () => {
   "use strict";
+  //force update latest href (again)
   if (window.location.href != actual_page) {
     window.history.__proto__.pushState = (a, b, url) => {
       console.debug(`[new_better_theater.js] state: ${a}`);
@@ -229,6 +234,7 @@ let site_fn = () => {
   }
 };
 
+//returns true if in youtube watch page
 let is_site_fn = () => {
   "use strict";
   if (window.location.href.match(/https?:\/\/www\.youtube\.com\/watch\.*/)) {
@@ -250,6 +256,7 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
+//built in youtube event listener for "finished navigating/loading"
 document.addEventListener("yt-navigate-finish", (e) => {
   site_fn();
 });
@@ -274,6 +281,8 @@ document.addEventListener("click", function (e) {
 
 (() => {
   "use strict";
+
+  //force update latest href on page load
   window.history.__proto__.pushState = function (a, b, url) {
     window.location.href = url;
     actual_page = url;
