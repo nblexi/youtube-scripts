@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Widescreen Theater Mode
-// @version      0.0.3
+// @version      0.0.4
 // @description  expand theater mode to cover the entire screen
 // @author       lexi
 // @match        https://www.youtube.com/*
@@ -39,7 +39,7 @@ let create_theater_button = () => {
     elem.type = "submit";
     elem.name = "formBtn";
     elem.style =
-      "font-size: 12px; padding: 10px; margin: 5px; border-radius: 8px; border: 2px solid #FF2E2E; background-color: #333333; color: #FF2E2E;";
+      "font-size: 12px; padding: 10px; margin: 5px; border-radius: 8px; border: 2px solid #c3adf7; background-color: #333333; color: #c3adf7;";
     target.appendChild(elem);
     build_button = false;
     theater_button = document.querySelector(toggle_button_selector);
@@ -87,13 +87,15 @@ let move_nav_bar = (status) => {
   let content = document.querySelector("#content");
   let masthead = document.querySelector("#masthead-container");
   let page_manager = document.querySelector("#page-manager");
-  let newParent = document.querySelector("#page-manager > ytd-watch-flexy");
+  let new_masthead_parent = document.querySelector(
+    "#page-manager > ytd-watch-flexy",
+  );
   let columns = document.querySelector("#columns");
 
   if (youtube_theater_mode_status()) {
     if (status) {
       if (!nav_bar_state) {
-        newParent.insertBefore(masthead, columns);
+        new_masthead_parent.insertBefore(masthead, columns);
         masthead.setAttribute(
           "style",
           "position: relative; background-color: rgba(0, 0, 0, 0.95);",
@@ -119,13 +121,25 @@ let move_nav_bar = (status) => {
       masthead.removeAttribute("style");
       columns.removeAttribute("style");
       page_manager.removeAttribute("style");
-      nav_bar_state;
+      nav_bar_state = false;
     }
   }
 };
 
 let move_video = (changed) => {
   "use strict";
+
+  let reset_player = () => {
+    player.removeAttribute("style");
+    video.removeAttribute("style");
+
+    player.setAttribute("style", "height: 56.25vw;");
+    video.setAttribute("style", "width: auto;");
+
+    theater_state = false;
+    update_theater_button_status("red");
+    move_nav_bar(false);
+  };
 
   let player = document.querySelector(player_selector);
   let video = document.querySelector(
@@ -135,14 +149,7 @@ let move_video = (changed) => {
   if (youtube_theater_mode_status()) {
     if (changed) {
       if (theater_state) {
-        player.removeAttribute("style");
-        video.removeAttribute("style");
-
-        player.setAttribute("style", "height: 56.25vw;");
-
-        theater_state = false;
-        update_theater_button_status("red");
-        move_nav_bar(false);
+        reset_player();
       }
     } else {
       if (!theater_state) {
@@ -152,7 +159,7 @@ let move_video = (changed) => {
         );
         video.setAttribute(
           "style",
-          "position: block; top: 0; left: 0; max-height: 100vh; max-width: 100vw; min-height: 0; min-width: 0; width: 100%; height: auto; z-index: 1000;",
+          "position: block; max-height: 100vh; max-width: 100vw; min-height: 0; min-width: 0; width: 100%; height: auto; z-index: 1000;",
         );
 
         theater_state = true;
@@ -161,14 +168,7 @@ let move_video = (changed) => {
       }
     }
   } else {
-    player.removeAttribute("style");
-    video.removeAttribute("style");
-
-    player.setAttribute("style", "height: 0;");
-
-    theater_state = false;
-    update_theater_button_status("red");
-    move_nav_bar(false);
+    reset_player();
   }
 };
 
